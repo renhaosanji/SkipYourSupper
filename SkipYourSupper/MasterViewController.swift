@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
+    var mytextField: UITextField?
 
 
     override func viewDidLoad() {
@@ -19,7 +21,7 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject(_:)))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(messageBox(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
@@ -36,11 +38,40 @@ class MasterViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //알리창 열기
+    func messageBox(sender: AnyObject) {
+        let alert = UIAlertController(title:"title",message:"message",preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addTextFieldWithConfigurationHandler { (textField)  ->Void in
+            self.mytextField = textField
+            self.mytextField!.placeholder = "enter you login ID"
+            
+            
+        }
+        
+        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: {
+            action in self.insertNewObject(self.objects)
+        }))
+        alert.addAction(UIAlertAction(title: "cancel", style: UIAlertActionStyle.Cancel, handler: {
+            action in print("hello")
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
 
     func insertNewObject(sender: AnyObject) {
         objects.insert(NSDate(), atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        let data = Data()
+        data.money=(mytextField?.text)!;
+        var realm = try! Realm()
+        try! realm.write {
+            realm.add(data)
+        }
+        //获取数据列表
+        var alldata = realm.objects(Data)
+        //获取数据列表的某一个位置的数据
+        print(alldata[3])
     }
 
     // MARK: - Segues
@@ -71,7 +102,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
         let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        cell.textLabel!.text = mytextField?.text
         return cell
     }
 
