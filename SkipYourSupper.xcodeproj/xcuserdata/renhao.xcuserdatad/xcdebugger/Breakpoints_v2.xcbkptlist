@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SkipYourSupper/MasterViewController.swift"
-            timestampString = "484394750.460857"
+            timestampString = "484931111.388081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "insertNewObject(_:)"
             landmarkType = "5">
          </BreakpointContent>
