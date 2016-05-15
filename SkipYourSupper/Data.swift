@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 class Data: Object {
-    var money:String = ""
+ dynamic var money = ""
    
  
     

@@ -14,10 +14,11 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
     var mytextField: UITextField?
-//    var tableView1: UITableView!
     var cellTitles = ["0x15", "0x2", "0x3", "0x4", "0x5", "0x6", "0x7", "0x8", "0x9", "0xA", "0xB",
                       "0xC", "0xD", "0xE"]
+    var alldata:Results<Data>?
 
+    @IBOutlet var tableview: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +31,18 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        self.tableview.delegate = self
 //        tableView1 = UITableView(frame: CGRect(x: 10,y: 10,width: 300,height: 300),style: UITableViewStyle.Grouped)
 //        tableView1.backgroundColor=UIColor.redColor();
 //        self.tableView1.delegate=self;
 //        self.tableView1.dataSource=self;
 //        self.tableView1.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell");
 //  self.view.addSubview(tableView1);
-        var realm = try! Realm()
-        var alldata = realm.objects(Data)
+        let realm = try! Realm()
+         alldata = realm.objects(Data)
         //获取数据列表的某一个位置的数据
-        print(alldata[3])
+        print("DBBBB"+alldata![3].money)
+   //     print(alldata)
         
     }
 
@@ -68,10 +71,9 @@ class MasterViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "cancel", style: UIAlertActionStyle.Cancel, handler: {
             action in print("hello")
             //获取数据列表
-             var realm = try! Realm()
-            var alldata = realm.objects(Data)
+
             //获取数据列表的某一个位置的数据
-            print(alldata[3])
+            print(self.alldata![3])
      
         }))
         self.presentViewController(alert, animated: true, completion: nil)
@@ -81,7 +83,7 @@ class MasterViewController: UITableViewController {
     func insertNewObject(sender: AnyObject) {
         objects.insert(NSDate(), atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        self.tableview.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
        
         
         let data = Data()
@@ -121,17 +123,19 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-
+        
    //     let object = objects[indexPath.row] as! NSDate
 //         var realm = try! Realm()
 //         var alldata = realm.objects(Data)
  //       cell.textLabel!.text = mytextField?.text
+
+        let item = self.alldata![indexPath.row]
         
-        var realm = try! Realm()
-        var alldata = realm.objects(Data)
-        let strVar : String = String(alldata[indexPath.row].money)
+  
+
        
-        cell.textLabel!.text = mytextField?.text
+    //    cell.textLabel!.text = mytextField?.text
+        cell.textLabel!.text = item.money
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
        
