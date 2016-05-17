@@ -38,11 +38,7 @@ class MasterViewController: UITableViewController {
 //        self.tableView1.dataSource=self;
 //        self.tableView1.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell");
 //  self.view.addSubview(tableView1);
-        let realm = try! Realm()
-         alldata = realm.objects(Data)
-        //获取数据列表的某一个位置的数据
-        print("DBBBB"+alldata![3].money)
-   //     print(alldata)
+
         
     }
 
@@ -70,10 +66,7 @@ class MasterViewController: UITableViewController {
         }))
         alert.addAction(UIAlertAction(title: "cancel", style: UIAlertActionStyle.Cancel, handler: {
             action in print("hello")
-            //获取数据列表
-
-            //获取数据列表的某一个位置的数据
-            print(self.alldata![3])
+     
      
         }))
         self.presentViewController(alert, animated: true, completion: nil)
@@ -81,19 +74,21 @@ class MasterViewController: UITableViewController {
 
 
     func insertNewObject(sender: AnyObject) {
-        objects.insert(NSDate(), atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableview.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
        
-        
+        objects.insert(NSDate(), atIndex: 0)
+        let realm = try! Realm()
+        let alldata = realm.objects(Data)
         let data = Data()
         data.money=(mytextField?.text)!;
-        var realm = try! Realm()
         try! realm.write {
             realm.add(data)
         }
-
-    }
+        //alldata.count-1 or 0 表示 插入的列表是从哪里开始的
+        let indexPath = NSIndexPath(forRow: alldata.count-1, inSection: 0)
+        // 下面的两个 tableview方法依次进行 估计其他UI组件也是这种机制
+        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+       
+        }
 
     // MARK: - Segues
 
@@ -128,13 +123,10 @@ class MasterViewController: UITableViewController {
 //         var realm = try! Realm()
 //         var alldata = realm.objects(Data)
  //       cell.textLabel!.text = mytextField?.text
-
-        let item = self.alldata![indexPath.row]
+        let realm = try! Realm()
+        let alldata = realm.objects(Data)
+        let item = alldata[indexPath.row]
         
-  
-
-       
-    //    cell.textLabel!.text = mytextField?.text
         cell.textLabel!.text = item.money
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
