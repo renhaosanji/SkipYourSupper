@@ -10,11 +10,11 @@ import Foundation
 import RealmSwift
 class Data: Object {
  dynamic var money = ""
-   
- 
+    dynamic var sno=0;
+  dynamic var date=""
     
     override static func primaryKey()->String?{
-        return "money"
+        return "date"
     }
     
 }

@@ -79,7 +79,9 @@ class MasterViewController: UITableViewController {
         let realm = try! Realm()
         let alldata = realm.objects(Data)
         let data = Data()
-        data.money=(mytextField?.text)!;
+        data.money=(mytextField?.text)!
+        data.sno = alldata.count+1
+        data.date = getTime()
         try! realm.write {
             realm.add(data)
         }
@@ -139,16 +141,31 @@ class MasterViewController: UITableViewController {
         return true
     }
 
+    //删除cell时的
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            objects.removeAtIndex(indexPath.row)
+            let realm = try! Realm()
+            let alldata = realm.objects(Data)
+           //删除制定的DB内容
+            try! realm.write {
+                realm.delete(alldata[indexPath.row])
+            }
+         //   objects.removeAtIndex(indexPath.row)
+        // 显示点击cell的位置
+            print("delele is"+String(indexPath.row))
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
     
-
+    func getTime() -> String {
+        let date = NSDate()
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.dateFormat = "yyy-MM-dd 'at' HH:mm:ss.SSS"
+        let strNowTime = timeFormatter.stringFromDate(date) as String
+        return strNowTime
+    }
 
 }
 

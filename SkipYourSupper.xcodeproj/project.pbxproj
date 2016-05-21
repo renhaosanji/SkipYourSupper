@@ -461,6 +461,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Renhao.SkipYourSupper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "dbaace94-88da-4da6-952e-2ea6021936db";
 			};
 			name = Debug;
 		};
@@ -476,6 +477,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Renhao.SkipYourSupper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "dbaace94-88da-4da6-952e-2ea6021936db";
 			};
 			name = Release;
 		};
@@ -544,6 +546,7 @@
 				3A7E0FE71CDF355A00E4AE99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A7E0FE81CDF355A00E4AE99 /* Build configuration list for PBXNativeTarget "SkipYourSupperTests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +555,7 @@
 				3A7E0FEA1CDF355A00E4AE99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A7E0FEB1CDF355A00E4AE99 /* Build configuration list for PBXNativeTarget "SkipYourSupperUITests" */ = {
 			isa = XCConfigurationList;
@@ -560,6 +564,7 @@
 				3A7E0FED1CDF355A00E4AE99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
