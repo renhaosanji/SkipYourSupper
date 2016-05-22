@@ -13,10 +13,10 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
-    var mytextField: UITextField?
-    var cellTitles = ["0x15", "0x2", "0x3", "0x4", "0x5", "0x6", "0x7", "0x8", "0x9", "0xA", "0xB",
-                      "0xC", "0xD", "0xE"]
-    var alldata:Results<Data>?
+    var mytextField_money: UITextField?
+    var mytextField_food: UITextField?
+    var mytextField_type: UITextField?
+    var mytextField_calorie: UITextField?
 
     @IBOutlet var tableview: UITableView!
 
@@ -53,14 +53,32 @@ class MasterViewController: UITableViewController {
     }
     //알리창 열기
     func messageBox(sender: AnyObject) {
-        let alert = UIAlertController(title:"title",message:"message",preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title:"Supper Detail Information",message:"Input the information of supper you want to eat",preferredStyle: UIAlertControllerStyle.Alert)
+        let realm = try! Realm()
+        let alldata = realm.objects(Data).last
+        print(alldata)
         alert.addTextFieldWithConfigurationHandler { (textField)  ->Void in
-            self.mytextField = textField
-            self.mytextField!.placeholder = "enter you login ID"
-            
-            
+            self.mytextField_money = textField
+            self.mytextField_money?.keyboardType = UIKeyboardType.NumberPad
+            self.mytextField_money!.placeholder = "enter how much you will to use"
+            self.mytextField_money!.text = alldata?.money
+            }
+        alert.addTextFieldWithConfigurationHandler { (textField)  ->Void in
+            self.mytextField_food = textField
+            self.mytextField_food!.placeholder = "enter the food name"
+            self.mytextField_food!.text = "enter the food name"
         }
-        
+        alert.addTextFieldWithConfigurationHandler { (textField)  ->Void in
+            self.mytextField_type = textField
+            self.mytextField_type!.placeholder = "enter the food type"
+            self.mytextField_type!.text = "enter the food type"
+        }
+        alert.addTextFieldWithConfigurationHandler { (textField)  ->Void in
+            self.mytextField_calorie = textField
+            self.mytextField_calorie!.placeholder = "enter the food calorie"
+            self.mytextField_calorie!.text = "enter the food calorie"
+        }
+
         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: {
             action in self.insertNewObject(self.objects)
         }))
@@ -79,7 +97,7 @@ class MasterViewController: UITableViewController {
         let realm = try! Realm()
         let alldata = realm.objects(Data)
         let data = Data()
-        data.money=(mytextField?.text)!
+        data.money=(mytextField_money?.text)!
         data.sno = alldata.count+1
         data.date = getTime()
         try! realm.write {
@@ -120,11 +138,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        
-   //     let object = objects[indexPath.row] as! NSDate
-//         var realm = try! Realm()
-//         var alldata = realm.objects(Data)
- //       cell.textLabel!.text = mytextField?.text
+
         let realm = try! Realm()
         let alldata = realm.objects(Data)
         let item = alldata[indexPath.row]
