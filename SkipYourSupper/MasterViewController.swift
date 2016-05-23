@@ -18,7 +18,9 @@ class MasterViewController: UITableViewController {
     var mytextField_type: UITextField?
     var mytextField_calorie: UITextField?
 
+    @IBOutlet weak var Total_money: UILabel!
     @IBOutlet var tableview: UITableView!
+    var total_money2 = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class MasterViewController: UITableViewController {
 //        self.tableView1.dataSource=self;
 //        self.tableView1.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell");
 //  self.view.addSubview(tableView1);
-
+     Total_money.text = String(getTotal_money())
         
     }
 
@@ -66,17 +68,17 @@ class MasterViewController: UITableViewController {
         alert.addTextFieldWithConfigurationHandler { (textField)  ->Void in
             self.mytextField_food = textField
             self.mytextField_food!.placeholder = "enter the food name"
-            self.mytextField_food!.text = "enter the food name"
+            self.mytextField_food!.text = alldata?.food
         }
         alert.addTextFieldWithConfigurationHandler { (textField)  ->Void in
             self.mytextField_type = textField
             self.mytextField_type!.placeholder = "enter the food type"
-            self.mytextField_type!.text = "enter the food type"
+            self.mytextField_type!.text = alldata?.type
         }
         alert.addTextFieldWithConfigurationHandler { (textField)  ->Void in
             self.mytextField_calorie = textField
             self.mytextField_calorie!.placeholder = "enter the food calorie"
-            self.mytextField_calorie!.text = "enter the food calorie"
+            self.mytextField_calorie!.text = alldata?.calorie
         }
 
         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: {
@@ -98,6 +100,9 @@ class MasterViewController: UITableViewController {
         let alldata = realm.objects(Data)
         let data = Data()
         data.money=(mytextField_money?.text)!
+        data.calorie=(mytextField_calorie?.text)!
+        data.food=(mytextField_food?.text)!
+        data.type=(mytextField_type?.text)!
         data.sno = alldata.count+1
         data.date = getTime()
         try! realm.write {
@@ -143,7 +148,7 @@ class MasterViewController: UITableViewController {
         let alldata = realm.objects(Data)
         let item = alldata[indexPath.row]
         
-        cell.textLabel!.text = item.money
+        cell.textLabel!.text = "Save "+item.money+"$ and"+item.calorie+"cal without"+item.type+"will to eat"+item.food
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
        
@@ -179,6 +184,17 @@ class MasterViewController: UITableViewController {
         timeFormatter.dateFormat = "yyy-MM-dd 'at' HH:mm:ss.SSS"
         let strNowTime = timeFormatter.stringFromDate(date) as String
         return strNowTime
+    }
+    func getTotal_money() -> Int {
+    let realm = try! Realm()
+    let alldata = realm.objects(Data)
+        for data in alldata {
+            let myString: String = data.money
+            let myInt: Int? = Int(myString)
+            total_money2 = total_money2+myInt!
+        }
+    
+    return total_money2
     }
 
 }

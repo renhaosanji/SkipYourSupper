@@ -10,9 +10,11 @@ import Foundation
 import RealmSwift
 class Data: Object {
  dynamic var money = ""
-    dynamic var sno=0;
-  dynamic var date=""
-    
+ dynamic var sno=0;
+ dynamic var date=""
+ dynamic var food=""
+ dynamic var type=""
+ dynamic var calorie=""
     override static func primaryKey()->String?{
         return "date"
     }
