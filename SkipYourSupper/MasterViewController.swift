@@ -83,6 +83,7 @@ class MasterViewController: UITableViewController {
 
         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: {
             action in self.insertNewObject(self.objects)
+            
         }))
         alert.addAction(UIAlertAction(title: "cancel", style: UIAlertActionStyle.Cancel, handler: {
             action in print("hello")
@@ -94,7 +95,7 @@ class MasterViewController: UITableViewController {
 
 
     func insertNewObject(sender: AnyObject) {
-       
+        
         objects.insert(NSDate(), atIndex: 0)
         let realm = try! Realm()
         let alldata = realm.objects(Data)
@@ -108,6 +109,8 @@ class MasterViewController: UITableViewController {
         try! realm.write {
             realm.add(data)
         }
+        total_money2=0
+        self.Total_money.text = String(getTotal_money())
         //alldata.count-1 or 0 表示 插入的列表是从哪里开始的
         let indexPath = NSIndexPath(forRow: alldata.count-1, inSection: 0)
         // 下面的两个 tableview方法依次进行 估计其他UI组件也是这种机制
@@ -148,7 +151,10 @@ class MasterViewController: UITableViewController {
         let alldata = realm.objects(Data)
         let item = alldata[indexPath.row]
         
+        
         cell.textLabel!.text = "Save "+item.money+"$ and"+item.calorie+"cal without"+item.type+"will to eat"+item.food
+        cell.textLabel?.adjustsFontSizeToFitWidth
+        cell.textLabel?.numberOfLines=0
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
        
@@ -173,6 +179,9 @@ class MasterViewController: UITableViewController {
         // 显示点击cell的位置
             print("delele is"+String(indexPath.row))
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            //减去相应的total值：重新导入数据，total_money要清零
+            total_money2=0
+            self.Total_money.text = String(getTotal_money())
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SkipYourSupper/MasterViewController.swift"
-            timestampString = "485712444.693275"
+            timestampString = "485799375.153174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "getTotal_money()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,13 +26,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SkipYourSupper/MasterViewController.swift"
-            timestampString = "485712153.332714"
+            timestampString = "485799375.153174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "getTotal_money()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SkipYourSupper/MasterViewController.swift"
+            timestampString = "485798289.617592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "messageBox(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SkipYourSupper.MasterViewController.messageBox (Swift.AnyObject) -&gt; ()"
+                  moduleName = "SkipYourSupper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/HDD/SkipYourSupper/SkipYourSupper/MasterViewController.swift"
+                  timestampString = "485798550.125629"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "2348">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SkipYourSupper.MasterViewController.(messageBox (Swift.AnyObject) -&gt; ()).(closure #5)"
+                  moduleName = "SkipYourSupper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/HDD/SkipYourSupper/SkipYourSupper/MasterViewController.swift"
+                  timestampString = "485798550.125773"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
