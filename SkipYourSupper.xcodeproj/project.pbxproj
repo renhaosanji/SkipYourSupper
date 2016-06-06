@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A73C85A1D05ABF50057FC86 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A73C8591D05ABF50057FC86 /* Entitlements.plist */; };
 		3A7E0FBF1CDF355A00E4AE99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E0FBE1CDF355A00E4AE99 /* AppDelegate.swift */; };
 		3A7E0FC11CDF355A00E4AE99 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E0FC01CDF355A00E4AE99 /* MasterViewController.swift */; };
 		3A7E0FC31CDF355A00E4AE99 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E0FC21CDF355A00E4AE99 /* DetailViewController.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3A73C8591D05ABF50057FC86 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		3A7E0FBB1CDF355A00E4AE99 /* SkipYourSupper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkipYourSupper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7E0FBE1CDF355A00E4AE99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A7E0FC01CDF355A00E4AE99 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		3A7E0FB21CDF355A00E4AE99 = {
 			isa = PBXGroup;
 			children = (
+				3A73C8591D05ABF50057FC86 /* Entitlements.plist */,
 				3A7E0FF71CDF3CFA00E4AE99 /* RealmSwift.framework */,
 				3A7E0FF31CDF3CF300E4AE99 /* Realm.framework */,
 				3A7E0FBD1CDF355A00E4AE99 /* SkipYourSupper */,
@@ -265,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A73C85A1D05ABF50057FC86 /* Entitlements.plist in Resources */,
 				3A7E0FCB1CDF355A00E4AE99 /* LaunchScreen.storyboard in Resources */,
 				3A7E0FC81CDF355A00E4AE99 /* Assets.xcassets in Resources */,
 				3A7E0FC61CDF355A00E4AE99 /* Main.storyboard in Resources */,
@@ -454,6 +458,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -462,7 +469,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Renhao.SkipYourSupper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dbaace94-88da-4da6-952e-2ea6021936db";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -471,6 +478,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -479,7 +489,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Renhao.SkipYourSupper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dbaace94-88da-4da6-952e-2ea6021936db";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
